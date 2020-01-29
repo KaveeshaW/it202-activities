@@ -2,23 +2,46 @@
 <html lang = "en">
 <head>
 <meta charset="UTF-8">
-<title>homework_2.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+  body {
+    margin: 1rem;
+  }
+</style>
+  
+<title>homework_3.2</title>
 </head>
 
 <body>
-<p> Kaveesha Weerasiri</p>
+<p class = "lead"> Kaveesha Weerasiri</p>
 <form id="orderOptions">
-  <input type="text" id="name" placeholder="Enter your name"> <br>
-  <input type="radio" name="whereEating" value="Eat In"> Eat In<br>
-  <input type="radio" name="whereEating" value="Carry Out"> Carry Out <br>
-  <input type="radio" name="whereEating" value="Delivery"> Delivery <br>
+  <div class = "form-group">
+    <label for="name">Name</label> 
+    <input class="form-control" type="text" id="name" placeholder="Enter your name"> 
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="whereEating" value="Eat In" id="eatIn"> 
+    <label class="form-check-label" for="eatIn">Eat In</label><br>
+    <input class="form-check-input" type="radio" name="whereEating" value="Carry Out" id="carryOut">
+    <label class="form-check-label" for="carryOut">Carry Out</label><br>
+    <input class="form-check-input" type="radio" name="whereEating" value="Delivery" id="delivery">
+    <label class="form-check-label" for="delivery">Delivery</label><br>
+  </div>
 </form>
-<select id="foodType">
-  <option value="korean">Korean</option>
-  <option value="indian">Indian</option>
-  <option value="mediterranean">Mediterranean</option>
-  <option value="northAmerican">North American</option>
-</select>
+<div class = "form-group">
+  <label for="foodType"> Food Type</label>
+  <select class="form-control" id="foodType">
+    <option value="korean">Korean</option>
+    <option value="indian">Indian</option>
+    <option value="mediterranean">Mediterranean</option>
+    <option value="northAmerican">North American</option> 
+  </select>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
