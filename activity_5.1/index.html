@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>activity_5.1</title>
+</head>
+
+<body>
+  <script>
+  let apiEndpoint = "https://api.nasa.gov/planetary/apod?api_key=EC9xin7SiXoe483kTtFMgXIH6d8eLVruH4T5RIpd";
+  fetch(apiEndpoint)
+  .then((response) => {
+    return response.json();
+  })
+  .then((myJson) => {
+    console.log(myJson);
+    let h = document.createElement("h1");
+    h.textContent = myJson["title"];
+    document.body.appendChild(h);
+    
+    let p = document.createElement("p");
+    p.textContent = myJson["explanation"];
+    document.body.appendChild(p);
+    
+    let p2 = document.createElement("p");
+    p2.textContent = myJson["date"];
+    document.body.appendChild(p2);
+    
+    let imgSrc = document.createElement("img");
+    imgSrc.src = myJson.hdurl;
+    document.body.appendChild(imgSrc);
+    
+    
+  });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>
