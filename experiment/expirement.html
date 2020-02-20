@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+
+    <script>
+      let db = new Dexie("MyFriendDB");
+      
+      db.version(1).stores({
+        friends: '++id,name,age'
+      });
+      
+      db.friends.add(
+        {name: "Dave",
+         age: 22,
+         hometown: "Washington DC"
+        });
+    </script>
+  </body>
+</html>
