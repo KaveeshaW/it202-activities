@@ -46,15 +46,16 @@
           let arrayDate = overallDate.split("T");
           //this takes the first element in the array (the date) and puts it into the variable inspecDate
           let inspecDate = arrayDate.shift();
-          console.log(inspecDate);
           let results = data.results;
           var contentString = '<div id="content">'+
           '<div id="siteNotice">'+
           '</div>'+
-          '<h1 id="firstHeading" class="firstHeading">UIC</h1>'+
+          '<h1 id="firstHeading" class="firstHeading">' + name + '</h1>'+
           '<div id="bodyContent">'+
-          
-              'This is what count is: ' +
+          'This is the name of the place: ' + name
+          + '<br> This is the facility type: ' + fType
+          + '<br> This is the address of the place: ' + address
+          + '<br> This is the inspectionDate: ' + inspecDate +
           '</div>'+
           '</div>';
           

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>activity_6.3</title>
+</head>
+<body>
+    <canvas id="canvas-demo" width="400" height="400">
+         This will be displayed if your browser doesn't
+         support the canvas element. The closing tag is
+         necessary.
+    </canvas>
+    <script>
+      const demoCanvas = document.getElementById('canvas-demo').getContext('2d');
+      
+      const notContextCanvas = document.getElementById('canvas-demo');
+      
+      let player = {x:100, y:100, radius: 50};
+      
+      const draw = () => {
+        demoCanvas.clearRect(0, 0, notContextCanvas.width, notContextCanvas.height);
+
+        player["x"] += 1;
+        
+        if(player["x"] >= notContextCanvas.width  + player["radius"]) {
+          player["x"] = -player["radius"];
+        }
+
+        demoCanvas.beginPath();
+        demoCanvas.arc(player["x"], 100, player["radius"], 0, Math.PI*2);
+        demoCanvas.closePath();
+        demoCanvas.fillStyle = "blue";
+        demoCanvas.fill();
+
+        window.requestAnimationFrame(draw);
+      }
+
+      draw();
+      
+    </script>
+</body>
+</html>
