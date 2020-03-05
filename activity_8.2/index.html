@@ -27,9 +27,9 @@
     <script>
       // This example displays a marker at the center of Australia.
       // When the user clicks the marker, an info window opens.
-
+      
       function initMap() {
-        let count = 0;
+        
         for (let data of inspection_data) {
           console.log(data.address); 
           var newPlace = {lat: parseFloat(data.latitude), lng: parseFloat(data.longitude)};
@@ -37,17 +37,24 @@
             zoom: 18,
             center: newPlace
           });
+          let name = data.dba_name;
+          let fType = data.facility_type;
+          let address = data.address;
+          //this returns a string that has a T value that you do not want
+          let overallDate = data.inspection_date;
+          //this splits the string so that you get an array with the date and a bunch of zeros
+          let arrayDate = overallDate.split("T");
+          //this takes the first element in the array (the date) and puts it into the variable inspecDate
+          let inspecDate = arrayDate.shift();
+          console.log(inspecDate);
+          let results = data.results;
           var contentString = '<div id="content">'+
           '<div id="siteNotice">'+
           '</div>'+
           '<h1 id="firstHeading" class="firstHeading">UIC</h1>'+
           '<div id="bodyContent">'+
-          '<p><b>UIC</b>, is Chicago\'s public research university. ' +
-          'It is one of the most diverse universities in America. ' + 
-          '<br><br> There are 16 colleges and 86 bachelor\'s programs at UIC' +
-          '<br><br>This is the UIC logo: <br><br><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/University_of_Illinois_at_Chicago_circle_logo.svg/800px-University_of_Illinois_at_Chicago_circle_logo.svg.png" width = "100" height = "100"> '
-          + '<br><br>This is a link to the UIC website: <a href="https://www.uic.edu">'+
-          'https://www.uic.edu/</a> </p>'+
+          
+              'This is what count is: ' +
           '</div>'+
           '</div>';
           
