@@ -60,17 +60,17 @@
           '</div>'+
           '</div>';
           
-          var infowindow = new google.maps.InfoWindow({
+          let infowindow = new google.maps.InfoWindow({
             content: contentString
           });
 
-          var marker = new google.maps.Marker({
+          let marker = new google.maps.Marker({
             position: newPlace,
             map: map,
             title: data.dba_name
           });
           
-          marker.addListener('click', function() {
+          marker.addListener('click', () => {
             infowindow.open(map, marker);
           });
         }
