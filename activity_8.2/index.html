@@ -29,14 +29,14 @@
       // When the user clicks the marker, an info window opens.
       
       function initMap() {
-        
+        let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: parseFloat(inspection_data[0].latitude), lng: parseFloat(inspection_data[0].longitude)}
+        });
         for (let data of inspection_data) {
           console.log(data.address); 
-          var newPlace = {lat: parseFloat(data.latitude), lng: parseFloat(data.longitude)};
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 18,
-            center: newPlace
-          });
+          let newPlace = {lat: parseFloat(data.latitude), lng: parseFloat(data.longitude)};
+          
           let name = data.dba_name;
           let fType = data.facility_type;
           let address = data.address;
