@@ -47,7 +47,11 @@
   <script>
     //mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
     
-    let url = "https://data.cityofchicago.org/resource/v6vf-nfxy.json?";
+    const url = "https://data.cityofchicago.org/resource/v6vf-nfxy.json?";
+    
+    const categoryIcons = {"GRAF": "remove_circle",
+                           "SFD": "streetview",
+                           "CSF": "policy"}
     
     document.querySelectorAll(".foo-button").forEach(item => {
       item.addEventListener('click', event => {
@@ -72,11 +76,13 @@
             
             //add attribute
             clone.setAttribute("data-sr-number", record["sr_number"]);
-            console.log(clone);
             
             //update values
             clone.querySelector("span.mdc-list-item__primary-text").textContent = record["sr_number"]; 
             clone.querySelector("span.mdc-list-item__secondary-text").textContent = record["street_address"]; 
+            
+            let icon = categoryIcons[target];
+            clone.querySelector(".mdc-list-item__graphic.material-icons").textContent = icon;
             
             //append to list
             document.querySelector("div#data ul.mdc-list--two-line").appendChild(clone);
