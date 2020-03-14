@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>activity_9.3</title>
+  <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <style>
+    .template {
+      display: none;
+    }
+    
+  </style>
+
+  </head>
+  <body>  
+    <!--could use data-category-code and put it as graf as well -->
+    <button class="mdc-button foo-button mdc-button--raised" id="GRAF">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label">Graffiti Removal Request</span>
+    </button>
+    <button class="mdc-button foo-button mdc-button--raised" id="SFD">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label">Street Light Out Complaint</span>
+    </button>
+    <button class="mdc-button foo-button mdc-button--raised" id="CSF">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label">Consumer Fraud Complaint</span>
+    </button>
+    
+    <div id="data">
+      <ul class="mdc-list mdc-list--two-line">
+      </ul>
+      <li class="template mdc-list-item mdc-ripple-upgraded">
+        <span class="mdc-list-item__graphic material-icons" aria-hidden="true">folder</span>
+        <span class="mdc-list-item__text">
+          <span class="mdc-list-item__primary-text">Two-line item</span>
+          <span class="mdc-list-item__secondary-text">Secondary text</span>
+        </span>
+        <span class="mdc-list-item__meta material-icons" aria-hidden="true">info</span>
+      </li>
+    </div>
+    
+  <script>
+    //mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+    
+    let url = "https://data.cityofchicago.org/resource/v6vf-nfxy.json?";
+    
+    document.querySelectorAll(".foo-button").forEach(item => {
+      item.addEventListener('click', event => {
+        let target = item.getAttribute("id");
+        let newURL = url + "sr_short_code=" + target + "&$LIMIT=5";
+        
+        let dataList = document.querySelector("div#data ul.mdc-list--two-line"); 
+        fetch(newURL)
+        .then((response) => {
+          return response.json();
+        })
+        .then((myJson) => {
+          //empty the list, but you don't want to remove the template class, otherwise the code below will not work
+          while(dataList.firstChild) {
+              dataList.removeChild(dataList.firstChild);
+          }
+          
+          for(let record of myJson) {
+            //clone template and remove the template class
+            let clone = document.querySelector("div#data li.template").cloneNode(true);
+            clone.classList.remove("template");
+            
+            //add attribute
+            clone.setAttribute("data-sr-number", record["sr_number"]);
+            console.log(clone);
+            
+            //update values
+            clone.querySelector("span.mdc-list-item__primary-text").textContent = record["sr_number"]; 
+            clone.querySelector("span.mdc-list-item__secondary-text").textContent = record["street_address"]; 
+            
+            //append to list
+            document.querySelector("div#data ul.mdc-list--two-line").appendChild(clone);
+          }          
+        });
+      })
+    })
+      
+//     document.querySelectorAll("aside.mdc-drawer a.mdc-list-item").forEach(item => {
+//       item.addEventListener('click', event => {
+//         hideViews();
+//         //could also use event.toElement.id if the specific tag has an id
+//         //target is an id selector with the hash symbol
+//         let target = item.getAttribute("href");
+//         document.querySelector(target).style.display = "block";
+//         drawer.open = false;
+//       })
+//     })
+    </script>
+  </body>
+</html>
